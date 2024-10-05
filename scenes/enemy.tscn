@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://cb32x8qmsnep1"]
+
+[ext_resource type="Script" path="res://scripts/Sus.gd" id="1_ieeoj"]
+[ext_resource type="Texture2D" uid="uid://civb8y0opchff" path="res://sprites/fishTile_078.png" id="2_ynhrw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_280fk"]
+radius = 26.0768
+
+[node name="Enemy" type="RigidBody2D"]
+position = Vector2(861, 515)
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_ieeoj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-163, -183)
+shape = SubResource("CircleShape2D_280fk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-169, -181)
+texture = ExtResource("2_ynhrw")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

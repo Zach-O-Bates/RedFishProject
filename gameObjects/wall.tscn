@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://d10wpgk0dbtt4"]
+
+[ext_resource type="Texture2D" uid="uid://q4hdqevnohou" path="res://sprites/fishTile_062.png" id="1_lnk64"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oue1s"]
+size = Vector2(70, 262)
+
+[node name="Wall" type="RigidBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -99)
+shape = SubResource("RectangleShape2D_oue1s")
+
+[node name="FishTile062" type="Sprite2D" parent="."]
+position = Vector2(0, -97)
+scale = Vector2(1, 4.03125)
+texture = ExtResource("1_lnk64")

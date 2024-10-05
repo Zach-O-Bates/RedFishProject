@@ -1,0 +1,114 @@
+[gd_scene load_steps=9 format=3 uid="uid://dewyn5as4inkm"]
+
+[ext_resource type="Script" path="res://scripts/StartGame.gd" id="1_5s5pc"]
+[ext_resource type="Texture2D" uid="uid://cdp0fvn8s2grg" path="res://sprites/42065.jpg" id="2_wsq50"]
+[ext_resource type="Script" path="res://scripts/Birdscript.gd" id="3_lgr5w"]
+[ext_resource type="Texture2D" uid="uid://c4fmp37p8rdfg" path="res://sprites/fishTile_080.png" id="4_ruc57"]
+[ext_resource type="Texture2D" uid="uid://civb8y0opchff" path="res://sprites/fishTile_078.png" id="6_kncnd"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_vshsy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nue2y"]
+radius = 59.0762
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0mtvo"]
+radius = 26.0768
+
+[node name="menu" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1162.0
+offset_bottom = 639.0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 453.0
+offset_top = 193.0
+offset_right = 621.0
+offset_bottom = 235.0
+scale = Vector2(2, 2)
+text = "I Hate Red Fish"
+
+[node name="btnPlay" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 466.0
+offset_top = 313.0
+offset_right = 688.0
+offset_bottom = 371.0
+text = "Begin"
+icon = SubResource("ViewportTexture_vshsy")
+script = ExtResource("1_5s5pc")
+
+[node name="background" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(578, 353)
+scale = Vector2(0.165286, 0.1765)
+texture = ExtResource("2_wsq50")
+
+[node name="Fish" type="RigidBody2D" parent="."]
+position = Vector2(181, 260)
+gravity_scale = 0.0
+script = ExtResource("3_lgr5w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fish"]
+position = Vector2(-50, -24)
+shape = SubResource("CircleShape2D_nue2y")
+
+[node name="FishTile080" type="Sprite2D" parent="Fish"]
+position = Vector2(-66, -23)
+scale = Vector2(2, 2)
+texture = ExtResource("4_ruc57")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Sus" type="RigidBody2D" parent="Node" groups=["enemy"]]
+position = Vector2(764, 278)
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Sus"]
+position = Vector2(1, -1)
+shape = SubResource("CircleShape2D_0mtvo")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node/Sus"]
+position = Vector2(8, -6)
+texture = ExtResource("6_kncnd")
+
+[node name="Sus2" type="RigidBody2D" parent="Node" groups=["enemy"]]
+position = Vector2(764, 278)
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Sus2"]
+position = Vector2(146, 150)
+shape = SubResource("CircleShape2D_0mtvo")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node/Sus2"]
+position = Vector2(143, 150)
+texture = ExtResource("6_kncnd")
+
+[node name="Sus3" type="RigidBody2D" parent="Node" groups=["enemy"]]
+position = Vector2(790, 207)
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Sus3"]
+position = Vector2(152, -117)
+shape = SubResource("CircleShape2D_0mtvo")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node/Sus3"]
+position = Vector2(146, -121)
+texture = ExtResource("6_kncnd")
+
+[connection signal="pressed" from="Control/btnPlay" to="Control/btnPlay" method="_on_pressed"]
+[connection signal="body_entered" from="Node/Sus" to="Node/Sus" method="_on_body_entered"]
+[connection signal="body_shape_entered" from="Node/Sus" to="Node/Sus" method="_on_body_shape_entered"]
+[connection signal="body_entered" from="Node/Sus2" to="Node/Sus2" method="_on_body_entered"]
+[connection signal="body_shape_entered" from="Node/Sus2" to="Node/Sus2" method="_on_body_shape_entered"]
+[connection signal="body_entered" from="Node/Sus3" to="Node/Sus3" method="_on_body_entered"]
+[connection signal="body_shape_entered" from="Node/Sus3" to="Node/Sus3" method="_on_body_shape_entered"]
