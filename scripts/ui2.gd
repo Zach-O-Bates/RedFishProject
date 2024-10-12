@@ -25,7 +25,7 @@ func increase_score():
 	update_score_display()
 	if score >= max_score:
 		await get_tree().create_timer(1).timeout
-		get_tree().change_scene_to_file("/Users/zacharybates/Desktop/GameCode/AngryBirdsBase/scenes/level_three.tscn")  # Adjust path to main scene
+		get_tree().change_scene_to_file("/Users/zacharybates/Desktop/GameCode/AngryBirdsBase/scenes/level_three.tscn") 
 	else:
 		spawn_enemy()
 
